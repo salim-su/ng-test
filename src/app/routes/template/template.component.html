@@ -1,0 +1,42 @@
+<page-header></page-header>
+
+<nz-card nzTitle="'html模板'">
+    <div [innerHTML]="content"></div>
+
+    <ng-container>
+        {{ content }}
+    </ng-container>
+</nz-card>
+
+<nz-card nzTitle="'imgsrc'">
+    <img [src]="picUrl" alt="" />
+</nz-card>
+
+<nz-card nzTitle="ngif不可以和ngfor在一行出现,会报错">
+    <ol>
+        <li *ngFor="let item of arr1; let i = index">
+            <ng-container *ngIf="i == 1"> {{ item.name }}==={{ i }} </ng-container>
+        </li>
+    </ol>
+</nz-card>
+
+<nz-card nzTitle="'ICON'">
+    <div class="icons-list">
+        <i mr20 nz-icon [nzIconfont]="'iconhudongjiaoliu'"></i>
+        <i mr20 nz-icon [nzIconfont]="'iconzhuxiao'"></i>
+        <i mr20 nz-icon [nzIconfont]="'iconshezhi'"></i>
+    </div>
+</nz-card>
+
+<nz-card nzTitle="'@input'">
+    <!--    <input nz-input [(ngModel)]="msg" />-->
+    <button (click)="click1()" nz-button nzType="primary">Primary1</button>
+    <button (click)="click2()" nz-button nzType="primary">Primary2</button>
+    <!--    <app-sf *ngFor="let msg of messages" [msg]="msg"></app-sf>-->
+    <app-sf [msg]="msg"></app-sf>
+</nz-card>
+
+<nz-card nzTitle="'@output'">
+    <h1>{{ showMsg }}</h1>
+    <app-sf (customClick)="onCustomClicked($event)"></app-sf>
+</nz-card>

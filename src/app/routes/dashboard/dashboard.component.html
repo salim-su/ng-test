@@ -1,0 +1,146 @@
+<page-header></page-header>
+<nz-card>
+    <!--<div *ngIf="true;thenTemplate; else elseTemplate"></div>-->
+    <!--<ng-template #thenTemplate>加载完成</ng-template>-->
+    <!--<ng-template #elseTemplate>正在加载</ng-template>-->
+
+    <div *ngIf="false; else elseTemplate">加载完成</div>
+    <ng-template #elseTemplate>正在加载</ng-template>
+</nz-card>
+<nz-card nzTitle="ng-container 不会增加额外的dom结构">
+    <button nz-button (click)="changeFlag()">切换flag</button>
+    <ng-container *ngIf="flag">
+        <p>这行文字有时显示，有时不显示111</p>
+    </ng-container>
+</nz-card>
+
+<nz-card nzTitle="带索引的 *ngFor">
+    <nz-row>
+        <nz-col [nzSpan]="6">
+            <h3>first</h3>
+            <ul>
+                <li *ngFor="let item of lists; let isFirst = first">
+                    {{ item.name }} <span *ngIf="isFirst">first</span>
+                </li>
+            </ul>
+        </nz-col>
+        <nz-col [nzSpan]="6">
+            <h3>even</h3>
+            <ul>
+                <li *ngFor="let item of lists; let isFirst = even">
+                    {{ item.name }} <span *ngIf="isFirst">even</span>
+                </li>
+            </ul>
+        </nz-col>
+        <nz-col [nzSpan]="6">
+            <h3>odd</h3>
+            <ul>
+                <li *ngFor="let item of lists; let isFirst = odd">{{ item.name }} <span *ngIf="isFirst">odd</span></li>
+            </ul>
+        </nz-col>
+        <nz-col [nzSpan]="6">
+            <h3>last</h3>
+            <ul>
+                <li *ngFor="let item of lists; let isFirst = last">
+                    {{ item.name }} <span *ngIf="isFirst">last</span>
+                </li>
+            </ul>
+        </nz-col>
+    </nz-row>
+</nz-card>
+
+<nz-card nzTitle="'form'">
+    <!--<input #box>-->
+    <input #box nz-input #box placeholder="Basic usage" />
+    <button (click)="save(box.value)">打印input值</button>
+</nz-card>
+
+<nz-card nzTitle="'moment'">
+    <nz-row>
+        <nz-col [nzSpan]="6">
+            <h3>获取一年前的今天</h3>
+            <p>{{ oneYearAgo }}</p>
+        </nz-col>
+    </nz-row>
+</nz-card>
+
+<nz-card nzTitle="'g2'" [nzHoverable]="true" style="width:500px;" [nzBodyStyle]="{ padding: 0 }">
+    <nz-row>
+        <nz-col [nzSpan]="24">
+            <g2-bar height="200" [title]="'销售额趋势'" [data]="salesData"></g2-bar>
+        </nz-col>
+    </nz-row>
+</nz-card>
+
+<nz-row style="background-color: #fff;height: 300px;">
+    <h3>动态创建G2</h3>
+
+    <div #pieNode></div>
+</nz-row>
+
+<nz-card nzTitle="'icon'" [nzHoverable]="true" style="width:500px;">
+    <nz-row>
+        <nz-col [nzSpan]="24">
+            <div style="display: flex;">
+                <i class="iconfont icon-jiancebaogao"></i>
+            </div>
+        </nz-col>
+    </nz-row>
+</nz-card>
+
+<nz-card nzTitle="'加载更多-alain组件'">
+    <nz-list
+        class="demo-loadmore-list"
+        [nzDataSource]="list"
+        [nzItemLayout]="'horizontal'"
+        [nzLoading]="initLoading"
+        [nzRenderItem]="item"
+        [nzLoadMore]="loadMore"
+    >
+        <ng-template #item let-item>
+            <nz-list-item
+                [nzContent]="item.loading ? '' : 'content'"
+                [nzActions]="item.loading ? [] : [editAction, moreAction]"
+            >
+                <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
+                    <ng-template #editAction><a (click)="edit(item)">edit</a></ng-template>
+                    <ng-template #moreAction><a (click)="edit(item)">more</a></ng-template>
+                    <nz-list-item-meta
+                        [nzTitle]="nzTitle"
+                        nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                        nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                    >
+                        <ng-template #nzTitle>
+                            <a href="https://ng.ant.design">{{ item.name.last }}</a>
+                        </ng-template>
+                    </nz-list-item-meta>
+                </nz-skeleton>
+            </nz-list-item>
+        </ng-template>
+        <ng-template #loadMore>
+            <div class="loadmore">
+                <button nz-button *ngIf="!loadingMore" (click)="onLoadMore()">loading more</button>
+            </div>
+        </ng-template>
+    </nz-list>
+</nz-card>
+
+<nz-card nzTitle="'安全导航操作符 ( ?. )和属性绑定,加中括号证明右侧为表达式'">
+    <h1>安全导航操作符 ( ?. ),保证如果变量名飞null或undefined时，保护视图渲染安全执行</h1>
+    <p>
+        {{ feikong?.name || 'feikongduanyan为undefined或null' }}
+        {{ feikongduanyan?.name || 'feikongduanyan为undefined或null' }}
+    </p>
+
+    <input type="text" [attr.name]="'salimsu'" [attr.disabled]="dis" />
+</nz-card>
+
+<nz-card nzTitle="'ICON'">
+    <div class="icons-list">
+        <i mr20 nz-icon [nzIconfont]="'iconzhuxiao'"></i>
+        <i mr20 nz-icon [nzIconfont]="'iconshouqi'"></i>
+        <i mr20 nz-icon [nzIconfont]="'iconshezhi'"></i>
+    </div>
+</nz-card>
+
+<nz-card nzTitle="'npm'"> <app-headertest [type]="'add'"></app-headertest></nz-card>

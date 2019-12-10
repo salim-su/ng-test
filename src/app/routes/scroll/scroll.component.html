@@ -1,0 +1,62 @@
+<div class="heart"
+     style="left: 1213px; top: 585px; opacity: 0.064; transform: scale(1.288, 1.288) rotate(45deg); background: rgb(229, 161, 49);"></div>
+<div class="heart"
+     style="left: 1295px; top: 325px; opacity: 0.142; transform: scale(1.264, 1.264) rotate(45deg); background: rgb(54, 20, 222);"></div>
+<div class="heart"
+     style="left: 1092px; top: 671px; opacity: 0.22; transform: scale(1.24, 1.24) rotate(45deg); background: rgb(13, 36, 77);"></div>
+<div class="heart"
+     style="left: 874px; top: 780px; opacity: 0.298; transform: scale(1.216, 1.216) rotate(45deg); background: rgb(20, 17, 108);"></div>
+<div class="heart"
+     style="left: 214px; top: 122px; opacity: 0.376; transform: scale(1.192, 1.192) rotate(45deg); background: rgb(0, 182, 21);"></div>
+<div class="heart"
+     style="left: 683px; top: -1px; opacity: 0.454; transform: scale(1.168, 1.168) rotate(45deg); background: rgb(112, 157, 15);"></div>
+<div class="heart"
+     style="left: 1267px; top: 118px; opacity: 0.545; transform: scale(1.14, 1.14) rotate(45deg); background: rgb(166, 207, 128);"></div>
+<div class="heart"
+     style="left: 1434px; top: 352px; opacity: 0.623; transform: scale(1.116, 1.116) rotate(45deg); background: rgb(139, 196, 75);"></div>
+<div class="heart"
+     style="left: 1503px; top: 573px; opacity: 0.701; transform: scale(1.092, 1.092) rotate(45deg); background: rgb(84, 16, 221);"></div>
+<div class="heart"
+     style="left: 1892px; top: 417px; opacity: 0.779; transform: scale(1.068, 1.068) rotate(45deg); background: rgb(67, 26, 75);"></div>
+<div class="heart"
+     style="left: 277px; top: 523px; opacity: 0.857; transform: scale(1.044, 1.044) rotate(45deg); background: rgb(4, 138, 70);"></div>
+<div class="heart"
+     style="left: 1082px; top: 134px; opacity: 0.896; transform: scale(1.032, 1.032) rotate(45deg); background: rgb(242, 14, 126);"></div>
+<div class="heart"
+     style="left: 1600px; top: 812px; opacity: 0.922; transform: scale(1.024, 1.024) rotate(45deg); background: rgb(189, 86, 57);"></div>
+<div class="heart"
+     style="left: 1369px; top: 49px; opacity: 0.961; transform: scale(1.012, 1.012) rotate(45deg); background: rgb(39, 221, 97);"></div>
+
+
+<div class="main-panel"
+     style="height: 400px;width: 800px;background-color: #ffbb96;margin: 100px auto;overflow-y: scroll;">
+
+    <h1 *ngFor="let item of array">{{item.name}}</h1>
+    <div style="color: red">
+        <img src="./assets/img/load.svg" alt="" style="width: 30px;height: 30px;" class="rotate">
+        <span>{{text}}</span>
+    </div>
+
+    <div
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        [infiniteScrollContainer]="selector"
+        [fromRoot]="true"
+        (scrolled)="onScroll()"
+    ></div>
+</div>
+
+<nz-card nzTitle="'动画1" style="padding-left: 300px;">
+    <button (click)="toActive()">按钮</button>
+
+    <div style="width: 50px;height: 50px;" [@colorState]="isActive ? 'active' : 'inactive'"></div>
+</nz-card>
+
+<nz-card nzTitle="'动画2" >
+    <div [@flyIn] >
+        <p style="height: 40px; line-height: 40px; background: pink;">
+            动画
+        </p>
+    </div>
+</nz-card>
