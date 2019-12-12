@@ -140,6 +140,11 @@ export class StartupService {
                         link: '/element',
                         icon: { type: 'icon', value: 'appstore' },
                     },
+                    {
+                        text: 'js',
+                        link: '/js',
+                        icon: { type: 'icon', value: 'appstore' },
+                    },
                 ],
             },
         ]);

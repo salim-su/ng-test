@@ -19,6 +19,7 @@ import { ScrollComponent } from './scroll/scroll.component';
 import { TemplateComponent } from './template/template.component';
 import { SfComponent } from './sf/sf.component';
 import { ElementComponent } from './element/element.component';
+import { JavaScriptStudyComponent } from './java-script-study/java-script-study.component';
 
 const routes: Routes = [
     {
@@ -32,6 +33,7 @@ const routes: Routes = [
             { path: 'template', component: TemplateComponent, data: { title: '模板' } },
             { path: 'sf', component: SfComponent, data: { title: 'sf' } },
             { path: 'element', component: ElementComponent, data: { title: 'element' } },
+            { path: 'js', component: JavaScriptStudyComponent, data: { title: 'js' } },
             {
                 path: 'exception',
                 loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule),
